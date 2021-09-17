@@ -1,12 +1,12 @@
 import { Recipe } from '../interfaces';
 import { mapRawRecipesToRecipes } from './mapper';
 
-const SPACE_ID = process.env.SPACE_ID;
-const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
+const SPACE_ID = process.env.NEXT_PUBLIC_SPACE_ID;
+const ACCESS_TOKEN = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
 
 const HOST_URL = 'https://cdn.contentful.com';
 export function getRecipes(): Promise<void | Recipe[]> {
-  if (SPACE_ID == undefined || ACCESS_TOKEN == undefined) throw new Error('Environmental variables SPACE_ID or ACCESS_TOKEN were not provided');
+  if (SPACE_ID == undefined || ACCESS_TOKEN == undefined) throw new Error('Environmental variables NEXT_PUBLIC_SPACE_ID or NEXT_PUBLIC_ACCESS_TOKEN were not provided');
   const parts = [HOST_URL, 'spaces', SPACE_ID, 'environments', 'master', 'entries'];
   const params = new URLSearchParams({
     access_token: ACCESS_TOKEN,
